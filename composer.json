@@ -1,0 +1,27 @@
+{
+    "name": "wizad/doctrine-doc-bundle",
+    "description": "Generates documentation for your doctrine ORM schema.",
+    "keywords": ["doctrine", "documentation", "doc"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "William Pottier",
+            "homepage": "http://william-pottier.fr"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "~2.1,<2.3-dev",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "1.2.*",
+        "eloquent/blox": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "Wizad\\DoctrineDocBundle": "" }
+    },
+    "target-dir": "Wizad/DoctrineDocBundle",
+    "extra": {
+
+    }
+}
