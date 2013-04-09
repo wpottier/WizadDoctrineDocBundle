@@ -90,6 +90,8 @@ class EntityFormatter extends MarkdownFormatter
     private function build()
     {
         $this->addTitle($this->getName());
+        $this->writeln(sprintf('*%s*', $this->metadatas->getName()));
+
         $this->addParagraph($this->docs->summary());
 
 
