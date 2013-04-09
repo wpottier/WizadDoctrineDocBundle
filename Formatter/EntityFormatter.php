@@ -119,6 +119,7 @@ class EntityFormatter extends MarkdownFormatter
             return strcmp($a['fieldName'], $b['fieldName']);
         });
 
+        // Create documentation for classic fields
         foreach ($fields as $field) {
 
             $this->writeln(sprintf(PHP_EOL . '### %s', $field['fieldName']));
@@ -152,6 +153,33 @@ class EntityFormatter extends MarkdownFormatter
 
             $this->writeln(sprintf(' - *nullable*: %s', $field['nullable'] ? 'yes' : 'no'));
             $this->writeln(sprintf(' - *unique*: %s', $field['unique'] ? 'yes' : 'no'));
+        }
+
+        // Create documentation for association
+        $associations = $this->metadatas->associationMappings;
+
+        foreach ($associations as $association) {
+
+            $remoteEntity = $association['sourceEntity'] == $this->metadatas->getName() ? $association['targetEntity'] : $association['sourceEntity'];
+
+            $this->writeln(sprintf(PHP_EOL . '### %s', $association['fieldName']));
+
+            $page = $this->getName($remoteEntity) . '.md';
+            if ($this->getBundleShortName($remoteEntity) != $this->getBundleShortName()) {
+                $page = $this->getBundleShortName($remoteEntity) . DIRECTORY_SEPARATOR . $page;
+            }
+            $this->writeln(sprintf(' - *entity*: %s', $this->createLink($page, $remoteEntity)));
+
+            switch ($association['type']) {
+                case 1:
+                case 2:
+                    $this->writeln(' - *type*: hasOne');
+                    break;
+                case 4:
+                case 8:
+                    $this->writeln(' - *type*: hasMany');
+                    break;
+            }
         }
     }
 
