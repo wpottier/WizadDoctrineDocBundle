@@ -50,8 +50,8 @@ class EntityFormatter extends MarkdownFormatter
 
     public function end($outputDirectory)
     {
-        $fs = new Filesystem();
-        $bundleDir  = $outputDirectory . DIRECTORY_SEPARATOR . $this->getBundleShortName();
+        $fs        = new Filesystem();
+        $bundleDir = $outputDirectory . DIRECTORY_SEPARATOR . $this->getBundleShortName();
 
         if (!$fs->exists($bundleDir)) {
             $fs->mkdir($bundleDir);
