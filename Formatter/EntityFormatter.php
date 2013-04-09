@@ -157,7 +157,7 @@ class EntityFormatter extends MarkdownFormatter
 
     private function loadClassMetadata()
     {
-        $this->reflectionClass = new \ReflectionClass($this->metadatas->name);
+        $this->reflectionClass = $this->metadatas->getReflectionClass();
 
         // Parse class documentation
         $this->docs = $this->docBlockParser->parseBlockComment($this->reflectionClass->getDocComment());
