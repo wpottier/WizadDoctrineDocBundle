@@ -47,10 +47,15 @@ class MarkdownFormatter
 
     public function addLink($url, $text = null)
     {
+        $this->write($this->createLink($url, $text));
+    }
+
+    public function createLink($url, $text = null)
+    {
         if (!$text) {
-            $this->write(sprintf('[[%s]]', $url));
+            return sprintf('[[%s]]', $url);
         } else {
-            $this->write(sprintf('[%s](%s)', $text, $url));
+            return sprintf('[%s](%s)', $text, $url);
         }
     }
 
