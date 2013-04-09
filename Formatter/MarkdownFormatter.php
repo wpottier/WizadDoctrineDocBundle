@@ -45,6 +45,14 @@ class MarkdownFormatter
         $this->writeln(PHP_EOL . $text . PHP_EOL);
     }
 
+    public function addLink($url, $text = null)
+    {
+        if (!$text) {
+            $this->write(sprintf('[[%s]]', $url));
+        } else {
+            $this->write(sprintf('[%s](%s)', $text, $url));
+        }
+    }
 
     /*
      * RAW manipulation
