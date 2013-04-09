@@ -61,22 +61,30 @@ class EntityFormatter extends MarkdownFormatter
         $this->dump($docFile);
     }
 
-    public function getName()
+    public function getName($typeName = null)
     {
-        $namespaceParts = explode('\\', $this->metadatas->getName());
+        if (!$typeName) {
+            $typeName = $this->metadatas->getName();
+        }
+
+        $namespaceParts = explode('\\', $typeName);
 
         return end($namespaceParts);
     }
 
-    public function getBundleName()
+    public function getBundleName($name = null)
     {
-        return ($p1 = strpos($ns = $this->metadatas->getName(), '\\')) === false ? $ns :
+        if (!$name) {
+            $name = $this->metadatas->getName();
+        }
+
+        return ($p1 = strpos($ns = $name, '\\')) === false ? $ns :
             substr($ns, 0, ($p2 = strpos($ns, '\\', $p1 + 1)) === false ? strlen($ns) : $p2);
     }
 
-    public function getBundleShortName()
+    public function getBundleShortName($name = null)
     {
-        return str_replace('\\', '', $this->getBundleName());
+        return str_replace('\\', '', $this->getBundleName($name));
     }
 
     private function build()
