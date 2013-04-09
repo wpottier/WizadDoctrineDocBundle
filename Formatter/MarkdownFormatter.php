@@ -54,6 +54,11 @@ class MarkdownFormatter
         }
     }
 
+    public function addBlankLine()
+    {
+        $this->write(PHP_EOL . PHP_EOL);
+    }
+
     /*
      * RAW manipulation
      */
