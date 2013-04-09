@@ -54,7 +54,7 @@ class IndexFormatter extends MarkdownFormatter
 
             foreach ($entities as $entityFormatter) {
                 /** @var $entityFormatter EntityFormatter */
-                $this->writeln(sprintf(' - [%s](%s/%s.md)', $entityFormatter->getName(), $bundleName, $entityFormatter->getName()));
+                $this->writeln(sprintf(' - %s', $this->createLink($bundleName . DIRECTORY_SEPARATOR . $entityFormatter->getName() . '.md', $bundleName, $entityFormatter->getName())));
             }
 
         }
