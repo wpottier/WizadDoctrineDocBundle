@@ -23,3 +23,7 @@ Register the bundle in `app/AppKernel.php`:
             new Wizad\DoctrineDocBundle\WizadDoctrineDocBundle(),
         );
     }
+
+## Usage ##
+
+    php app/console doctrine:generate:documentation <output_path>
