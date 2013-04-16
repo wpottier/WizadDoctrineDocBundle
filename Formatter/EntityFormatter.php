@@ -159,8 +159,13 @@ class EntityFormatter extends MarkdownFormatter
             }
 
 
+            if (isset($field['nullable'])) {
                 $this->writeln(sprintf(' - *nullable*: %s', $field['nullable'] ? 'yes' : 'no'));
+            }
+
+            if (isset($field['unique'])) {
                 $this->writeln(sprintf(' - *unique*: %s', $field['unique'] ? 'yes' : 'no'));
+            }
 
         }
 
