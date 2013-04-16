@@ -143,16 +143,25 @@ class EntityFormatter extends MarkdownFormatter
 
             switch ($field['type']) {
                 case 'string':
-                    $this->writeln(sprintf(' - *length*: %s', $field['length']));
+                    if (isset($field['length'])) {
+                        $this->writeln(sprintf(' - *length*: %s', $field['length']));
+                    }
                     break;
                 case 'decimal':
-                    $this->writeln(sprintf(' - *scale*: %s', $field['scale']));
-                    $this->writeln(sprintf(' - *precision*: %s', $field['precision']));
+                    if (isset($field['scale'])) {
+                        $this->writeln(sprintf(' - *scale*: %s', $field['scale']));
+                    }
+
+                    if (isset($field['precision'])) {
+                        $this->writeln(sprintf(' - *precision*: %s', $field['precision']));
+                    }
                     break;
             }
 
-            $this->writeln(sprintf(' - *nullable*: %s', $field['nullable'] ? 'yes' : 'no'));
-            $this->writeln(sprintf(' - *unique*: %s', $field['unique'] ? 'yes' : 'no'));
+
+                $this->writeln(sprintf(' - *nullable*: %s', $field['nullable'] ? 'yes' : 'no'));
+                $this->writeln(sprintf(' - *unique*: %s', $field['unique'] ? 'yes' : 'no'));
+
         }
 
         // Create documentation for association
