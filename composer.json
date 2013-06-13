@@ -14,7 +14,7 @@
         "symfony/framework-bundle": "~2.1,<2.4",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": ">=1.2.*",
-        "eloquent/blox": "dev-master"
+        "eloquent/blox": "2.0.*"
     },
     "minimum-stability": "dev",
     "autoload": {
